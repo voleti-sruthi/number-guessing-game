@@ -1,8 +1,18 @@
+
 function set(){
     setTimeout(function set(){
         document.getElementById("pop").classList.add("popUp");
     },1000);
 }
+document.addEventListener("keyup",(event)=>{
+    console.log(event.code);
+    if(event.code == "Enter" && !document.getElementsByClassName("main")[0].classList.contains("popDown")){
+        document.getElementById("checkbtn").click();
+    }
+    else if(event.code == "Enter" && !document.getElementsByClassName("restart")[0].classList.contains("popDown")){
+        playagain();
+    }
+})
 var diffLevel;
 var compNum;
 var noOfLives;
@@ -37,7 +47,7 @@ function level(diffLevel){
     }
     initialchances = noOfLives;
     console.log(compNum,noOfLives,initialchances);
-    
+    document.getElementById("guessNum").focus();
 }
 function check(){
     var num = document.getElementById("guessNum").value;
@@ -70,9 +80,9 @@ function check(){
             document.getElementById("occ").innerHTML = "OOPS! 😭 no chances left. The Correct number is " + compNum;
             document.getElementById("score").innerHTML = "Your Score : 0";
     }
-   
 }
+
 function playagain(){
-    setTimeout(function playagain(){location.reload();},1000);
+    location.reload();
 }
 
